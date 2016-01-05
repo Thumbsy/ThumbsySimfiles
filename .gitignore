@@ -1,10 +1,13 @@
 # Filetypes #
 ############
+*.avi
 *.bmp
 *.dwi
 *.gif
+*.mp3
 *.mp4
 *.ods
+*.ogg
 *.xcf
 *.xlsx
 
