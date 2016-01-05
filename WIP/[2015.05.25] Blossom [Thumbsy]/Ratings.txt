@@ -1,0 +1,15 @@
+DDRX:
+Beginner: 3
+Easy: 5
+Medium: 7
+Hard: 10
+Challenge: 13
+Blawesom: 15
+
+ITG:
+Beginner: 2
+Easy: 3
+Medium: 5
+Hard: 7
+Challenge: 9
+Blawesom: 10

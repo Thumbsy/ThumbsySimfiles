@@ -1,0 +1,102 @@
+#TITLE:Shooting Star;
+#SUBTITLE:VCP x -PAD Side-;
+#ARTIST:TeddyLoid feat. IA;
+#TITLETRANSLIT:;
+#SUBTITLETRANSLIT:;
+#ARTISTTRANSLIT:;
+#GENRE:;
+#CREDIT:Thumbsy;
+#MENUCOLOR:;
+#METERTYPE:DDR X;
+#BANNER:;
+#BACKGROUND:;
+#LYRICSPATH:;
+#CDTITLE:;
+#MUSIC:Shooting Star-cut.ogg;
+#OFFSET:1.654;
+#SAMPLESTART:50.033;
+#SAMPLELENGTH:29.538;
+#SELECTABLE:YES;
+#LISTSORT:;
+#BPMS:0.000=130.000;
+#STOPS:;
+#BGCHANGES:;
+#ATTACKS:;
+
+//---------------dance-single - ----------------
+#NOTES:
+     dance-single:
+     :
+     Hard:
+     0:
+     0.006,0.030,0.000,0.000,0.000:  // measure 1
+0000
+0000
+0000
+0000
+,  // measure 2
+0000
+0000
+0000
+0000
+,  // measure 3
+0000
+0000
+0000
+0000
+,  // measure 4
+0000
+0000
+0000
+0000
+,  // measure 5
+0000
+0000
+0000
+0000
+,  // measure 6
+0000
+0000
+0000
+0000
+,  // measure 7
+0000
+0000
+0000
+0000
+,  // measure 8
+0000
+0000
+0000
+0000
+,  // measure 9
+0000
+0000
+0000
+0000
+,  // measure 10
+0000
+0000
+0000
+0000
+,  // measure 11
+0000
+0000
+0000
+0000
+,  // measure 12
+0000
+0000
+0000
+0000
+,  // measure 13
+1000
+1000
+1000
+1000
+,  // measure 14
+1000
+0000
+0000
+0000
+;
