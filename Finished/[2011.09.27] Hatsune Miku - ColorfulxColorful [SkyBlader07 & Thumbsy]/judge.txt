@@ -1,0 +1,4 @@
+[global]
+-Changed offset from 0.000 to -0.037
+
+[chart specific]

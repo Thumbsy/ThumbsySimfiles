@@ -1,0 +1,37 @@
+#TITLE:ワールド・コーリング;
+#SUBTITLE:VCP x -x Side-;
+#ARTIST:じん feat. IA;
+#TITLETRANSLIT:World Calling;
+#SUBTITLETRANSLIT:;
+#ARTISTTRANSLIT:Jin feat. IA;
+#GENRE:;
+#CREDIT:Shizu;
+#MENUCOLOR:;
+#METERTYPE:DDR X;
+#BANNER:;
+#BACKGROUND:;
+#LYRICSPATH:;
+#CDTITLE:;
+#MUSIC:World Calling.mp3;
+#OFFSET:1.708;
+#SAMPLESTART:63.105;
+#SAMPLELENGTH:15.313;
+#SELECTABLE:YES;
+#LISTSORT:;
+#BPMS:0.000=125.006;
+#STOPS:;
+#BGCHANGES:;
+#ATTACKS:;
+
+//---------------dance-single - ----------------
+#NOTES:
+     dance-single:
+     :
+     Hard:
+     0:
+     0.000,0.000,0.000,0.000,0.000:  // measure 1
+0000
+0000
+0000
+0000
+;

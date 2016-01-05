@@ -1,0 +1,16 @@
+﻿Freaky song .___.
+
+song: 少女IN ~VIRGIN IN~
+artist: DJ TECHNORCH fw. 宇宙☆海月
+BPM: 215
+special: speed up
+duration: 1:35
+
+Gameplay: soon
+
+Enjoy! :]
+
+Changelog:
+5/1/2012 = Initial upload
+8/1/2012 = Added #DISPLAYBPM tag
+4/5/2012 = Fixed missing #ARTISTTRANSLIT
