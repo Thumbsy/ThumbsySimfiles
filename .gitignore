@@ -1,0 +1,14 @@
+# Filetypes #
+############
+*.bmp
+*.dwi
+*.gif
+*.mp4
+*.ods
+*.xcf
+*.xlsx
+
+# Folders #
+###########
+CDTitles/
+Zipped/
