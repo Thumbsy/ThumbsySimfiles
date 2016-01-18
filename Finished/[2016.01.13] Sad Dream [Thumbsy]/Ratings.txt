@@ -1,0 +1,13 @@
+DDRX: 
+Beginner: 3
+Easy: 5
+Medium: 9
+Hard: 12
+Challenge: 15
+
+ITG:
+Beginner: 2
+Easy: 4
+Medium: 7
+Hard: 9
+Challenge: 10
