@@ -4,12 +4,12 @@ Easy: 5
 Medium: 7
 Hard: 10
 Challenge: 13
-Blawesom: 15
+Blawesom: 14
 
 ITG:
 Beginner: 2
 Easy: 3
 Medium: 5
 Hard: 7
-Challenge: 9
-Blawesom: 10
+Challenge: 8
+Blawesom: 9
