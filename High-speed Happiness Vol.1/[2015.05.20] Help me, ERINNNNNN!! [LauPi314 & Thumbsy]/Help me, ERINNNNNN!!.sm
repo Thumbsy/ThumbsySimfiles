@@ -3,11 +3,11 @@
 #ARTIST:ビートまりお;
 #TITLETRANSLIT:;
 #SUBTITLETRANSLIT:;
-#ARTISTTRANSLIT:;
+#ARTISTTRANSLIT:beatMARIO;
 #GENRE:;
 #CREDIT:LauPi314 & Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR;
+#METERTYPE:DDR X;
 #BANNER:;
 #BACKGROUND:;
 #LYRICSPATH:;
@@ -805,7 +805,7 @@
      dance-single:
      :
      Easy:
-     4:
+     5:
      0.231,0.394,0.000,0.281,0.000:
 0000
 0000
@@ -1362,7 +1362,7 @@
      dance-single:
      :
      Beginner:
-     1:
+     2:
      0.106,0.179,0.000,0.030,0.000:
 0000
 0000
@@ -2536,7 +2536,7 @@ MMMM
      dance-single:
      :
      Medium:
-     7:
+     8:
      0.411,0.609,0.222,0.319,0.004:  // measure 1
 0000
 0000
