@@ -8,10 +8,10 @@
 #CREDIT:LauPi314 & Thumbsy;
 #MENUCOLOR:255,255,255,1;
 #METERTYPE:DDR X;
-#BANNER:;
-#BACKGROUND:;
+#BANNER:HsH-Vol.1-bn-rc.png;
+#BACKGROUND:HsH-Vol.1-placeholderbg.png;
 #LYRICSPATH:;
-#CDTITLE:;
+#CDTITLE:LauPi314 & Thumbsy - HsH-Vol.1.png;
 #MUSIC:Help me, ERINNNNNN!!-cut.ogg;
 #OFFSET:0.775;
 #SAMPLESTART:62.786;
