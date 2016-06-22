@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Nothing More-bn.png;
 #BACKGROUND:Nothing More-bg.png;
 #LYRICSPATH:;
