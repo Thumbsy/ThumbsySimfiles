@@ -273,10 +273,10 @@
 :TIME=79.294:LEN=0.089:MODS=*12 -20% Flip
 ;
 
-//---------------dance-single - Thumbsy-CHA+----------------
+//---------------dance-single - Thumbsy+----------------
 #NOTES:
      dance-single:
-     Thumbsy-CHA+:
+     Thumbsy+:
      Challenge:
      0:
      0.689,0.701,0.384,0.220,0.087:  // measure 1

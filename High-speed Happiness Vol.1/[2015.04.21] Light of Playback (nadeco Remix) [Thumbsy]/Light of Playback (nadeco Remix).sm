@@ -23,12 +23,12 @@
 #BGCHANGES:;
 #ATTACKS:;
 
-//---------------dance-single - Thumbsy-EXP----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-EXP:
+     Thumbsy:
      Hard:
-     11:
+     8:
      0.543,0.618,0.279,0.011,0.000:  // measure 1
 0000
 0000
@@ -548,12 +548,12 @@
 0000
 ;
 
-//---------------dance-single - Thumbsy-DIF----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-DIF:
+     Thumbsy:
      Medium:
-     8:
+     5:
      0.408,0.481,0.150,0.000,0.000:
 0000
 0000
@@ -1009,12 +1009,12 @@
 0000
 ;
 
-//---------------dance-single - Thumbsy-BEG----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-BEG:
+     Thumbsy:
      Beginner:
-     4:
+     3:
      0.199,0.275,0.054,0.000,0.000:
 0000
 0000
@@ -1342,12 +1342,12 @@
 0000
 ;
 
-//---------------dance-single - Thumbsy-CHA----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-CHA:
+     Thumbsy:
      Challenge:
-     15:
+     10:
      0.719,0.893,0.376,0.043,0.231:
 0000
 0000
@@ -2071,12 +2071,12 @@
 0000
 ;
 
-//---------------dance-single - Thumbsy-BAS----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-BAS:
+     Thumbsy:
      Easy:
-     7:
+     4:
      0.321,0.447,0.354,0.000,0.000:
 0000
 0000
