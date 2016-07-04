@@ -1,0 +1,112 @@
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+				song_time = 0;
+				
+				prefix_mods = {
+					{56.705,80.000,'*8 No Reverse','end'},
+					{56.705,80.000,'*8 No Split','end'},
+					{56.705,80.000,'*8 No Alternate','end'},
+					{56.705,80.000,'*8 No Cross','end'},
+					{56.705,80.000,'*12 No Invert','end'},
+					{56.705,80.000,'*12 No Flip','end'},
+					{56.705,80.000,'*3 No Centered','end'},
+					{65.177,65.353,'*6 No Centered','end'},
+					{56.705,80.000,'*10 No Beat','end'},
+					{56.705,80.000,'*1000 No Stealth','end'},
+					{56.705,80.000,'*1000 No Mini','end'},
+					
+					{57.058,0.353,'*8 100% Reverse','len'},
+					{57.764,0.353,'*12 100% Invert','len'},
+					{58.470,0.177,'*12 10% Centered','len'},
+					{58.647,0.177,'*12 20% Centered','len'},
+					{58.823,0.177,'*12 30% Centered','len'},
+					{59.000,0.177,'*12 40% Centered','len'},
+					{59.176,0.177,'*12 50% Centered','len'},
+					{59.352,0.177,'*12 60% Centered','len'},
+					{59.882,2.117,'*12 100% Beat','len'},
+					{62.352,0.353,'*12 50% Stealth','len'},
+					
+					{62.705,0.353,'*8 100% Split','len'},
+					{63.058,0.353,'*8 100% Reverse','len'},
+					{63.411,0.353,'*8 100% Alternate','len'},
+					{64.117,0.177,'*12 10% Centered','len'},
+					{64.294,0.177,'*12 20% Centered','len'},
+					{64.471,0.177,'*12 30% Centered','len'},
+					{64.647,0.177,'*12 40% Centered','len'},
+					{64.823,0.177,'*12 50% Centered','len'},
+					{64.999,0.177,'*12 60% Centered','len'},
+					{65.177,0.059,'*12 50% Stealth','len'},
+					{65.177,0.059,'*12 -30% Mini','len'},
+					{65.529,2.471,'*12 100% Beat','len'},
+					
+					{68.353,0.353,'*8 100% Cross','len'},
+					{68.705,0.353,'*8 100% Reverse','len'},
+					{69.058,0.353,'*8 100% Alternate','len'},
+					{69.764,0.177,'*12 50% Stealth','len'},
+					{70.117,0.177,'*12 100% Stealth','len'},
+					{70.470,0.177,'*12 50% Stealth','len'},
+					{70.823,0.089,'*12 20% Centered','len'},
+					{71.000,0.089,'*12 20% Centered','len'},
+					{71.176,2.471,'*12 100% Beat','len'},
+					
+					{74.000,0.706,'*8 100% Alternate','len'},
+					{74.352,0.706,'*12 100% Flip','len'},
+					{75.411,0.177,'*12 100% Stealth','len'},
+					{75.764,0.177,'*12 50% Stealth','len'},
+					{76.118,0.177,'*12 100% Stealth','len'},
+					{76.470,0.353,'*12 50% Stealth','len'},
+					{76.823,1.059,'*12 100% Beat','len'},
+					
+					{79.294,0.089,'*12 50% Stealth','len'},
+					{79.294,0.089,'*12 -40% Mini','len'},
+					{79.294,0.089,'*12 -20% Flip','len'},
+				}
+								
+				self:queuecommand('Update');
+			end"
+		
+		UpdateCommand="%function(self)
+					
+			-----------------------
+			-- Player mod resets --
+			-----------------------
+			-- GAMESTATE:ApplyGameCommand('mod,clearall')
+			
+			--------------------------------------------------------------------------------------------
+			-- Mod reader code originally coded by Taronuke, remade to support end times and lengths. --
+			--------------------------------------------------------------------------------------------
+			for i,v in pairs(prefix_mods) do
+				if song_time >=v[1] then
+					if (v[4] == 'len' and song_time <=v[1]+v[2]) or (v[4] == 'end' and song_time <=v[2]) then
+						if table.getn(v) == 5 then
+							GAMESTATE:ApplyGameCommand('mod,'..v[3],v[5]);
+						else
+							GAMESTATE:ApplyGameCommand('mod,'..v[3]);
+						end
+					end
+				end
+			end
+			
+		self:sleep(0.02);
+		self:queuecommand('Update');
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); song_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+</children></ActorFrame>

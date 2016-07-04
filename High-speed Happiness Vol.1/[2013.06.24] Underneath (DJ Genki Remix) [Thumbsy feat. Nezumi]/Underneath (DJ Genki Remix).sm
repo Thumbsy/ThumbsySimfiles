@@ -43,6 +43,7 @@
 :TIME=68.895:LEN=0.088:MODS=*10000 Stealth
 :TIME=68.983:LEN=0.088:MODS=*10000 50% Stealth
 ;
+#FGCHANGES:0.000=lua=1.000=0=0=1;
 
 //---------------dance-single - Thumbsy----------------
 #NOTES:

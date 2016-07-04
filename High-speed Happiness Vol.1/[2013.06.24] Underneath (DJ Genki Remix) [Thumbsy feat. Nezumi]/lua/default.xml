@@ -1,0 +1,68 @@
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+				song_time = 0;
+				
+				prefix_mods = {
+					{49.395,71.983,'*10000 -100% No Stealth','end'},
+					{56.277,0.089,'*10000 50% Stealth','len'},
+					{57.512,0.089,'*10000 50% Stealth','len'},
+					{57.601,0.088,'*10000 Stealth','len'},
+					{57.689,0.088,'*10000 50% Stealth','len'},
+					{61.748,0.044,'*10000 50% Stealth','len'},
+					{61.836,0.044,'*10000 50% Stealth','len'},
+					{61.924,0.044,'*10000 50% Stealth','len'},
+					{63.159,0.265,'*2 50% Stealth','len'},
+					{67.395,0.088,'*10000 50% Stealth','len'},
+					{68.806,0.089,'*10000 50% Stealth','len'},
+					{68.895,0.088,'*10000 Stealth','len'},
+					{68.983,0.088,'*10000 50% Stealth','len'},
+				}
+								
+				self:queuecommand('Update');
+			end"
+		
+		UpdateCommand="%function(self)
+					
+			-----------------------
+			-- Player mod resets --
+			-----------------------
+			-- GAMESTATE:ApplyGameCommand('mod,clearall')
+			
+			--------------------------------------------------------------------------------------------
+			-- Mod reader code originally coded by Taronuke, remade to support end times and lengths. --
+			--------------------------------------------------------------------------------------------
+			for i,v in pairs(prefix_mods) do
+				if song_time >=v[1] then
+					if (v[4] == 'len' and song_time <=v[1]+v[2]) or (v[4] == 'end' and song_time <=v[2]) then
+						if table.getn(v) == 5 then
+							GAMESTATE:ApplyGameCommand('mod,'..v[3],v[5]);
+						else
+							GAMESTATE:ApplyGameCommand('mod,'..v[3]);
+						end
+					end
+				end
+			end
+			
+		self:sleep(0.02);
+		self:queuecommand('Update');
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); song_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+</children></ActorFrame>

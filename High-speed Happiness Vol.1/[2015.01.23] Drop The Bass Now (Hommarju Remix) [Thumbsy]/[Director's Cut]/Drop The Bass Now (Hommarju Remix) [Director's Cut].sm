@@ -208,6 +208,7 @@
 228.000=Drop The Bass Now (Hommarju Remix) [Director's Cut]-bg.png=1.000=0=0=1,
 99999=-nosongbg-=1.000=0=0=0 // don't automatically add -songbackground-
 ;
+#FGCHANGES:0.000=lua=1.000=0=0=1;
 #ATTACKS:
             
 :TIME=56.705:END=80.000:MODS=*8 No Reverse

@@ -21,7 +21,13 @@
 #BPMS:0.000=175.000;
 #STOPS:;
 #BGCHANGES:;
-#ATTACKS:;
+#FGCHANGES:0.000=lua=1.000=0=0=1;
+#ATTACKS:TIME=21.945:END=32.916:MODS=*1.2 No Stealth
+:TIME=21.946:LEN=0.514:MODS=*6 96% Stealth
+:TIME=24.688:LEN=0.514:MODS=*6 96% Stealth
+:TIME=27.431:LEN=0.514:MODS=*6 96% Stealth
+:TIME=30.173:LEN=0.514:MODS=*6 96% Stealth
+;
 
 //---------------dance-single - Thumbsy----------------
 #NOTES:
