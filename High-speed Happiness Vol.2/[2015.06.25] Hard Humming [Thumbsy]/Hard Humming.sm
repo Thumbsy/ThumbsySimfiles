@@ -1,12 +1,12 @@
 #TITLE:Hard Humming;
-#SUBTITLE:;
+#SUBTITLE:HsH-Vol.2;
 #ARTIST:XIO & GNS;
 #TITLETRANSLIT:;
 #SUBTITLETRANSLIT:;
 #ARTISTTRANSLIT:;
 #GENRE:;
 #CREDIT:Thumbsy;
-#MENUCOLOR:;
+#MENUCOLOR:255,255,255,1;
 #METERTYPE:DDR X;
 #BANNER:Hard Humming-bn.png;
 #BACKGROUND:Hard Humming-bg.png;
@@ -23,10 +23,10 @@
 #BGCHANGES:;
 #ATTACKS:;
 
-//---------------dance-single - Thumbsy-EXP----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-EXP:
+     Thumbsy:
      Hard:
      10:
      0.444,0.588,0.304,0.067,0.019:
@@ -616,10 +616,10 @@
 3000
 ;
 
-//---------------dance-single - Thumbsy-DIF----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-DIF:
+     Thumbsy:
      Medium:
      7:
      0.334,0.376,0.076,0.038,0.000:
@@ -1036,10 +1036,10 @@
 1000
 ;
 
-//---------------dance-single - Thumbsy-BEG----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-BEG:
+     Thumbsy:
      Beginner:
      1:
      0.094,0.137,0.000,0.000,0.000:
@@ -1404,10 +1404,10 @@
 0001
 ;
 
-//---------------dance-single - Thumbsy-BAS----------------
+//---------------dance-single - Thumbsy----------------
 #NOTES:
      dance-single:
-     Thumbsy-BAS:
+     Thumbsy:
      Easy:
      6:
      0.276,0.381,0.067,0.086,0.000:  // measure 1
