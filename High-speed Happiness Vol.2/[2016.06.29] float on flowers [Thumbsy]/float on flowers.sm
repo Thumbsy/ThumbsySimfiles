@@ -6,7 +6,7 @@
 #ARTISTTRANSLIT:;
 #GENRE:;
 #CREDIT:Thumbsy;
-#MENUCOLOR:;
+#MENUCOLOR:255,255,255,1;
 #METERTYPE:ITG;
 #BANNER:float on flowers-bn.png;
 #BACKGROUND:float on flowers-bg.png;

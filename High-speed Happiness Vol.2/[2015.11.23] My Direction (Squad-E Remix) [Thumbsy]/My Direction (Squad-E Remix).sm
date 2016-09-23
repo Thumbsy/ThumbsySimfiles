@@ -6,7 +6,7 @@
 #ARTISTTRANSLIT:;
 #GENRE:;
 #CREDIT:Thumbsy;
-#MENUCOLOR:;
+#MENUCOLOR:255,255,255,1;
 #METERTYPE:ITG;
 #BANNER:My Direction (Squad-E Remix)-bn.png;
 #BACKGROUND:My Direction (Squad-E Remix)-bg.png;
