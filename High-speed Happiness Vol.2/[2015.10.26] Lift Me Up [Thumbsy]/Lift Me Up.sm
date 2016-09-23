@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Lift Me Up-bn.png;
 #BACKGROUND:Lift Me Up-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     8:
      0.385,0.564,0.415,0.317,0.019:
 0000
 0000
@@ -664,7 +664,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     8:
+     6:
      0.319,0.564,0.128,0.438,0.000:  // measure 1
 0000
 0000
@@ -1225,7 +1225,7 @@
      dance-single:
      Thumbsy:
      Challenge:
-     12:
+     9:
      0.441,0.697,0.370,0.513,0.057:
 0000
 0000
@@ -2422,7 +2422,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     6:
+     4:
      0.245,0.331,0.128,0.355,0.000:
 0000
 0000

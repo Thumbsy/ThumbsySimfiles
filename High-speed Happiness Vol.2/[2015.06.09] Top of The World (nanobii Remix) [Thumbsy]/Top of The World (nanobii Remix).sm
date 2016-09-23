@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Top of The World (nanobii Remix)-bn.png;
 #BACKGROUND:Top of The World (nanobii Remix)-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     3:
+     2:
      0.147,0.231,0.041,0.000,0.000:
 0000
 0000
@@ -361,7 +361,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     5:
+     3:
      0.249,0.366,0.021,0.124,0.000:
 0000
 0000
@@ -698,7 +698,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     8:
+     5:
      0.374,0.566,0.113,0.361,0.000:
 0000
 0000
@@ -1143,7 +1143,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     7:
      0.505,0.566,0.196,0.485,0.005:  // measure 1
 0000
 0000

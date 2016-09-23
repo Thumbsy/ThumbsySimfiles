@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Kiriban Getter-bn.png;
 #BACKGROUND:Kiriban Getter-bg.png;
 #LYRICSPATH:;
@@ -427,7 +427,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     5:
+     3:
      0.205,0.303,0.028,0.085,0.000:
 0000
 0000
@@ -795,7 +795,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     9:
+     7:
      0.415,0.539,0.418,0.047,0.000:
 0000
 0000
@@ -1263,7 +1263,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     8:
      0.482,0.607,0.285,0.133,0.000:
 0000
 0000
@@ -1775,7 +1775,7 @@
      dance-single:
      Thumbsy:
      Challenge:
-     15:
+     11:
      0.634,0.978,0.408,0.152,0.351:  // measure 1
 0000
 0000

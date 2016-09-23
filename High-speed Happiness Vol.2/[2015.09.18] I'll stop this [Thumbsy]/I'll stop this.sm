@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:I'll stop this-bn.png;
 #BACKGROUND:I'll stop this-bg.png;
 #LYRICSPATH:;
@@ -35,7 +35,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     3:
+     2:
      0.190,0.244,0.186,0.078,0.000:
 0000
 0000
@@ -403,7 +403,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     6:
+     4:
      0.290,0.317,0.049,0.157,0.000:  // measure 1
 0000
 0000
@@ -771,7 +771,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     8:
+     6:
      0.434,0.487,0.441,0.245,0.015:
 0000
 0000
@@ -1239,7 +1239,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     8:
      0.482,0.563,0.216,0.225,0.157:
 0000
 0000
@@ -1959,7 +1959,7 @@
      dance-single:
      Thumbsy:
      Challenge:
-     14:
+     10:
      0.690,0.846,0.314,0.422,0.314:
 0000
 0000

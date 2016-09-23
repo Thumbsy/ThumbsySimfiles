@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:You're Everything-bn.png;
 #BACKGROUND:You're Everything-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     3:
+     2:
      0.180,0.245,0.093,0.000,0.000:
 0000
 0000
@@ -411,7 +411,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     6:
+     4:
      0.294,0.384,0.121,0.047,0.000:
 0000
 0000
@@ -794,7 +794,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     10:
+     7:
      0.507,0.595,0.701,0.196,0.093:
 0000
 0000
@@ -1461,7 +1461,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     12:
+     9:
      0.578,0.700,0.579,0.290,0.224:
 0000
 0000
@@ -2216,7 +2216,7 @@ M3MM
      dance-single:
      Thumbsy:
      Challenge:
-     15:
+     10:
      0.796,0.875,0.972,0.832,0.388:  // measure 1
 0000
 0000

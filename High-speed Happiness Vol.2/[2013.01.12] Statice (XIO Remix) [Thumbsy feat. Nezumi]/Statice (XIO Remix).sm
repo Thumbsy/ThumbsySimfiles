@@ -1,4 +1,4 @@
-#TITLE:スターチス (XIO Remix);
+﻿#TITLE:スターチス (XIO Remix);
 #SUBTITLE:HsH-Vol.2;
 #ARTIST:cittan* feat. 結月そら;
 #TITLETRANSLIT:Statice (XIO Remix);
@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy feat. Nezumi;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Statice (XIO Remix)-bn.png;
 #BACKGROUND:Statice (XIO Remix)-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     4:
+     3:
      0.154,0.211,0.022,0.000,0.000:
 0000
 0000
@@ -521,7 +521,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     7:
+     5:
      0.290,0.396,0.080,0.095,0.000:
 0000
 0000
@@ -1032,7 +1032,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     8:
+     6:
      0.352,0.432,0.109,0.058,0.026:
 0000
 0000
@@ -1747,7 +1747,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     8:
      0.475,0.540,0.080,0.160,0.226:  // measure 1
 0000
 0000

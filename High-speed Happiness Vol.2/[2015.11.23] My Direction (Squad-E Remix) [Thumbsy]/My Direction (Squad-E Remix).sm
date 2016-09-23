@@ -1,4 +1,4 @@
-#TITLE:My Direction (Squad-E Remix);
+﻿#TITLE:My Direction (Squad-E Remix);
 #SUBTITLE:HsH-Vol.2;
 #ARTIST:D：CODE;
 #TITLETRANSLIT:;
@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:My Direction (Squad-E Remix)-bn.png;
 #BACKGROUND:My Direction (Squad-E Remix)-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     4:
+     3:
      0.189,0.233,0.014,0.000,0.000:  // measure 1
 0000
 0000
@@ -526,7 +526,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     6:
+     4:
      0.271,0.434,0.034,0.163,0.000:
 0000
 0000
@@ -1053,7 +1053,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     9:
+     7:
      0.436,0.567,0.075,0.497,0.000:
 0000
 0000
@@ -1756,7 +1756,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     11:
+     8:
      0.560,0.567,0.347,0.497,0.024:
 0000
 0000

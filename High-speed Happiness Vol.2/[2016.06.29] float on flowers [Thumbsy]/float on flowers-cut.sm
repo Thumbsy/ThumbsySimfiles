@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:float on flowers-bn.png;
 #BACKGROUND:float on flowers-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     4:
+     3:
      0.175,0.303,0.030,0.000,0.000:
 0000
 0000
@@ -496,7 +496,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     7:
+     5:
      0.331,0.448,0.193,0.141,0.000:  // measure 1
 0000
 0000
@@ -990,7 +990,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     10:
+     7:
      0.446,0.586,0.185,0.274,0.100:
 0000
 0000
@@ -1912,7 +1912,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     13:
+     9:
      0.586,0.758,0.126,0.126,0.256:
 0000
 0000
@@ -2966,7 +2966,7 @@
      dance-single:
      Thumbsy:
      Challenge:
-     15:
+     10:
      0.724,0.999,0.341,0.126,0.319:
 0000
 0000

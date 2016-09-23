@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,0,0,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:LOOKBACK-bn.png;
 #BACKGROUND:LOOKBACK-bg.png;
 #LYRICSPATH:;
@@ -67,7 +67,7 @@
      dance-single:
      Thumbsy:
      Beginner:
-     4:
+     3:
      0.182,0.264,0.078,0.010,0.000:  // measure 1
 0000
 0000
@@ -465,7 +465,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     7:
+     5:
      0.339,0.377,0.282,0.185,0.039:
 0000
 0000
@@ -959,7 +959,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     10:
+     8:
      0.467,0.490,0.467,0.068,0.170:
 0000
 0000
@@ -1657,7 +1657,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     14:
+     10:
      0.634,0.792,0.438,0.175,0.530:
 0000
 0000
@@ -2587,7 +2587,7 @@
      dance-single:
      Thumbsy:
      Challenge:
-     16:
+     11:
      0.806,0.905,0.963,0.282,0.603:
 0000
 0000

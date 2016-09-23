@@ -7,7 +7,7 @@
 #GENRE:;
 #CREDIT:Thumbsy;
 #MENUCOLOR:255,255,255,1;
-#METERTYPE:DDR X;
+#METERTYPE:ITG;
 #BANNER:Hard Humming-bn.png;
 #BACKGROUND:Hard Humming-bg.png;
 #LYRICSPATH:;
@@ -28,7 +28,7 @@
      dance-single:
      Thumbsy:
      Hard:
-     10:
+     7:
      0.444,0.588,0.304,0.067,0.019:
 0000
 0000
@@ -621,7 +621,7 @@
      dance-single:
      Thumbsy:
      Medium:
-     7:
+     5:
      0.334,0.376,0.076,0.038,0.000:
 0000
 0000
@@ -1409,7 +1409,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     6:
+     4:
      0.276,0.381,0.067,0.086,0.000:  // measure 1
 0000
 0000
