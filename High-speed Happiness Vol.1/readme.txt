@@ -5,7 +5,7 @@ Hope you'll enjoy the charts as much as I do myself, thanks for playing!
 
 
 
-===== Grapics credits/sources =====
+===== Graphics credits/sources =====
 Pack banner/jacket illustration by MiMikuChair http://mimikuchair.deviantart.com/
 
 Candy Crack Curtain Call [Thumbsy]:
