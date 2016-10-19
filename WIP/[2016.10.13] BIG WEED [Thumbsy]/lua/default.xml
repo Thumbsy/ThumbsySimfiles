@@ -1,0 +1,165 @@
+<!-- Template taken from WinDEU: https://www.twitch.tv/windeu/v/58522987 -->
+
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+			fgcurcommand = 1;
+			checked = false;
+			prefix_time = 0;
+			
+			prefix_curmessage = 1;
+			
+			
+			prefix_messages = {
+				{25.612,'SkewTwitch'},
+			};
+			
+			
+			prefix_mods = {
+			
+				{6.469,6.723,'*12 no reverse','end'},
+				{6.470,0.056,'*12 reverse','len'},
+				{6.723,6.978,'*100 no mini','len'},
+				{6.724,6.977,'*100 -200% mini','end'},
+				{9.343,21.682,'*10 150% beat','end'},
+				{21.683,1,'*10 no beat','len'}
+			
+			}
+						
+			self:queuecommand('Update');
+		end"
+		
+		UpdateCommand="%function(self)
+		
+			local beat = GAMESTATE:GetSongBeat();
+						
+			--------------------------------------------------------------------------------------------
+			-- Mod reader code originally coded by Taronuke, remade to support end times and lengths. --
+			--------------------------------------------------------------------------------------------
+			for i,v in pairs(prefix_mods) do
+				if prefix_time >=v[1] then
+					if (v[4] == 'len' and prefix_time <=v[1]+v[2]) or (v[4] == 'end' and prefix_time <=v[2]) then
+						if table.getn(v) == 5 then
+							GAMESTATE:ApplyGameCommand('mod,'..v[3],v[5]);
+						else
+							GAMESTATE:ApplyGameCommand('mod,'..v[3]);
+						end
+					end
+				end
+			end
+			
+			
+			
+			if beat >= 0 and not checked then								
+				SCREENMAN:GetTopScreen():x(0);
+				SCREENMAN:GetTopScreen():rotationz(0);
+				SCREENMAN:GetTopScreen():stopeffect();
+				checked = true;
+			end
+			
+			
+			
+			-------------------------
+			-- BEAT SPECIFIC STUFF --
+			-------------------------
+			if beat >= 21.500 and fgcurcommand == 1 then
+				SCREENMAN:GetTopScreen():rotationz(10);
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 22.500 and fgcurcommand == 2 then
+				SCREENMAN:GetTopScreen():rotationz(0);
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 23.000 and fgcurcommand == 3 then
+				SCREENMAN:GetTopScreen():addx(-100);
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 23.875 and fgcurcommand == 4 then
+				SCREENMAN:GetTopScreen():addx(100);
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 25.000 and fgcurcommand == 5 then
+				SCREENMAN:GetTopScreen():bob();
+				SCREENMAN:GetTopScreen():effectmagnitude(40,0,0);
+				SCREENMAN:GetTopScreen():effectperiod(1);
+				SCREENMAN:GetTopScreen():effectclock('beat');
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 28.000 and fgcurcommand == 6 then
+				SCREENMAN:GetTopScreen():stopeffect();
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 44.000 and fgcurcommand == 7 then
+				SCREENMAN:GetTopScreen():bounce();
+				SCREENMAN:GetTopScreen():effectmagnitude(0,-50,0);
+				SCREENMAN:GetTopScreen():effectperiod(1);
+				SCREENMAN:GetTopScreen():effectclock('beat');
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 60.000 and fgcurcommand == 8 then
+				SCREENMAN:SystemMessage('S E N D H E L P');
+				SCREENMAN:GetTopScreen():vibrate();
+				SCREENMAN:GetTopScreen():effectmagnitude(20,20,20);
+				SCREENMAN:GetTopScreen():GetChild('Overlay'):spin();
+				SCREENMAN:GetTopScreen():GetChild('Overlay'):effectmagnitude(0,0,720);
+				
+				for i=1,2 do
+					if GAMESTATE:IsPlayerEnabled(i-1) then
+						local pl = SCREENMAN:GetTopScreen():GetChild('LifeP'..i);
+						local ps = SCREENMAN:GetTopScreen():GetChild('ScoreP'..i);
+						pl:spin();
+						pl:effectmagnitude(0,0,360);
+						ps:spin();
+						ps:effectmagnitude(0,0,360);
+					end
+				end
+				
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			if beat >= 65.000 and fgcurcommand == 9 then
+				SCREENMAN:GetTopScreen():stopeffect();
+				SCREENMAN:GetTopScreen():GetChild('Overlay'):stopeffect();
+				
+				for i=1,2 do
+					if GAMESTATE:IsPlayerEnabled(i-1) then
+						SCREENMAN:GetTopScreen():GetChild('LifeP'..i):stopeffect();
+						SCREENMAN:GetTopScreen():GetChild('ScoreP'..i):stopeffect();
+					end
+				end
+				fgcurcommand = fgcurcommand + 1;
+			end
+			
+			
+			
+			self:sleep(0.0166666666);
+			self:queuecommand('Update');
+			
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); prefix_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+	
+</children></ActorFrame>
