@@ -17,6 +17,9 @@
 #BPMS:0.000=128.000;
 #BGCHANGES:;
 #FGCHANGES:;
+#MENUCOLOR:255,255,255,1;
+#METERTYPE:ITG;
+
 //--------------- dance-single - Thumbsy ----------------
 #NOTES:
      dance-single:

@@ -13,6 +13,8 @@
 #STOPS:;
 #FGCHANGES:;
 #BGCHANGES:;
+#MENUCOLOR:255,255,255,1;
+#METERTYPE:ITG;
 
 //--------------- Dance Single - Thumbsy ----------------
 #NOTES:
