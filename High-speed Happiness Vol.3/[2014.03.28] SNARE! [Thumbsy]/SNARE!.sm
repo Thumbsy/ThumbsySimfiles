@@ -15,6 +15,7 @@
 #SELECTABLE:YES;
 #OFFSET:-0.036;
 #BPMS:0.000=170.000;
+#STOPS:;
 #MENUCOLOR:255,255,255,1;
 #METERTYPE:ITG;
 #LISTSORT:;
@@ -382,7 +383,7 @@
      dance-single:
      Thumbsy:
      Easy:
-     3:
+     4:
      0.274,0.35,0.151,0,0:
 0000
 0000
