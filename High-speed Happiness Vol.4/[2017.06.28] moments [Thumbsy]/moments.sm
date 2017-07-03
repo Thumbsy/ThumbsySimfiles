@@ -54,7 +54,7 @@
 ;
 #STOPS:;
 #BGCHANGES:;
-#FGCHANGES:;
+#FGCHANGES:0.000=lua=1.000=0=0=1;
 //--------------- dance-single - Thumbsy ----------------
 #NOTES:
      dance-single:
