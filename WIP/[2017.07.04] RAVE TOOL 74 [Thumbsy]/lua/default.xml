@@ -12,7 +12,7 @@
 		Type="Quad"
 		InitCommand="hidden,1"
 		OnCommand="%function(self)
-			local function inject_speed_mods(init_speed, pn, mode)
+			function inject_speed_mods(init_speed, pn, mode)
 				-- Set some default values in case we're playing the file in the editor. Make sure to have the speed setting in the editor match this default value.
 				if mode == 'editor' then
 					init_speed = 3;
