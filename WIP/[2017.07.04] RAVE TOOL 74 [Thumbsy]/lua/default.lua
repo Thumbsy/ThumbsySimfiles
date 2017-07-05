@@ -1,4 +1,4 @@
--- Template taken from Puurokulho's wndrwll: https://www.youtube.com/watch?v=KDWAGbwdA_w
+-- Based on template taken from Puurokulho's wndrwll: https://www.youtube.com/watch?v=KDWAGbwdA_w
 
 local function song_mod_internal(str, pn)
 	local ps= GAMESTATE:GetPlayerState(pn)
@@ -17,36 +17,72 @@ local function inject_speed_mods(init_speed, pn, mode)
 		init_speed = 3;
 	end
 	
+	-- Quick little function I threw together to make the 'breathing' effect, allowing you to easily add a effect where the notes compress/decompress from/to init_speed.
+	-- The going back and forth both happen in equal amounts of time (in other words, half the total time it takes for the effect to be applied and undone).
+	-- 'beat' is the beat at which the effect starts, 'undo_after' the amount of beats after which the reversing starts, 'base_rate' is the base rate (lol), 'muliplier' is the factor we multiply the speed with.
+	local function linear_breathing(beat, undo_after, base_rate, multiplier)
+		mods[#mods+1] = {beat, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. multiplier*init_speed .. 'x', pn}
+		mods[#mods+1] = {beat+undo_after, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. init_speed .. 'x', pn}
+	end
+	
+	-- ============================================================================================================
 	-- Here we add our player-tailored speed mods to the mod table.
 	-- We can't use double-quotation characters, so we escape the apostrophe instead.
 	-- What we want to do here is insert tables into mods[], with variable values.
 	-- The format of these tables is as seen in the mods[] table.
-	mods[#mods+1] = {0, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
+	
+	-- If we want our speed mod tweens to be in time to the beat, we need to calculate what I call the 'base rate'.
+	-- We do this by dividing 1 by the amount of time (in seconds) you want the transition to take.
+	-- ============================================================================================================
+	
+	mods[#mods+1] = {0, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn} -- Immediately set all of our players to XMod at the beginning
 	mods[#mods+1] = {99.75, '\' *' .. 1.148*(init_speed-0.75) .. ' ' .. 0.75 .. 'x', pn}
 	mods[#mods+1] = {102, '\' *' .. 1.292*(init_speed-0.75) .. ' ' .. init_speed .. 'x', pn}
+	
+	-- Let me see you bounce!
+	linear_breathing(104, 0.125, 10.417, 1.5)
+	linear_breathing(104.75, 0.125, 10.417, 1.5)
+	linear_breathing(105.5, 0.125, 10.417, 1.5)
+	linear_breathing(106, 0.125, 10.417, 1.5)
+	linear_breathing(106.75, 0.125, 10.417, 1.5)
+	linear_breathing(107.5, 0.125, 10.417, 1.5)
+	linear_breathing(108, 0.125, 10.417, 1.5)
+	linear_breathing(108.75, 0.125, 10.417, 1.5)
+	linear_breathing(109.5, 0.125, 10.417, 1.5)
+	linear_breathing(110, 0.125, 10.417, 1.5)
+	linear_breathing(110.75, 0.125, 10.417, 1.5)
+	linear_breathing(111.5, 0.125, 10.417, 1.5)
+	linear_breathing(112, 0.125, 10.417, 1.5)
+	linear_breathing(112.75, 0.125, 10.417, 1.5)
+	linear_breathing(113.5, 0.125, 10.417, 1.5)
+	linear_breathing(114, 0.125, 10.417, 1.5)
+	linear_breathing(114.75, 0.125, 10.417, 1.5)
+	linear_breathing(115.5, 0.125, 10.417, 1.5)
+	linear_breathing(116, 0.125, 10.417, 1.5)
+	linear_breathing(116.75, 0.125, 10.417, 1.5)
+	linear_breathing(117.5, 0.125, 10.417, 1.5)
+	
+	-- Yes sorry that was kind of mean. But it fits the music well, right?
 	mods[#mods+1] = {119.5, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
+	
+	-- Itchy glitchy~
 	mods[#mods+1] = {192.25, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {196.5, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. 1.5*init_speed .. 'x', pn}
-	mods[#mods+1] = {196.563, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {196.625, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. 1.5*init_speed .. 'x', pn}
-	mods[#mods+1] = {196.688, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {196.75, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. 1.5*init_speed .. 'x', pn}
-	mods[#mods+1] = {196.813, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {196.875, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. 1.5*init_speed .. 'x', pn}
-	mods[#mods+1] = {196.938, '\' *' .. 40*(1.5*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {198.167, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. 2*init_speed .. 'x', pn}
-	mods[#mods+1] = {198.25, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {198.333, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. 2*init_speed .. 'x', pn}
-	mods[#mods+1] = {198.417, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {198.5, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. 2*init_speed .. 'x', pn}
-	mods[#mods+1] = {198.583, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
-	mods[#mods+1] = {198.667, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. 2*init_speed .. 'x', pn}
-	mods[#mods+1] = {198.75, '\' *' .. 15.385*(2*init_speed - init_speed) .. ' ' .. init_speed .. 'x', pn}
+	linear_breathing(196.5, 0.0625, 40, 1.5)
+	linear_breathing(196.625, 0.0625, 40, 1.5)
+	linear_breathing(196.75, 0.0625, 40, 1.5)
+	linear_breathing(196.875, 0.0625, 40, 1.5)
+	linear_breathing(198.167, 0.083, 15.385, 2)
+	linear_breathing(198.333, 0.083, 15.385, 2)
+	linear_breathing(198.5, 0.083, 15.385, 2)
+	linear_breathing(198.667, 0.083, 15.385, 2)
+	
+	-- Yes you can have your speed back
 	mods[#mods+1] = {209, '\' *' .. 5.181*(init_speed - 0.25*init_speed) .. ' ' .. 0.25*init_speed .. 'x', pn}
 	mods[#mods+1] = {215, '\' *' .. 10.362*(init_speed - 0.5*init_speed) .. ' ' .. 0.75*init_speed .. 'x', pn}
 	mods[#mods+1] = {215.25, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. 0.5*init_speed .. 'x', pn}
 	mods[#mods+1] = {215.5, '\' *' .. 10.362*(init_speed - 0.75*init_speed) .. ' ' .. 1.25*init_speed .. 'x', pn}
 	mods[#mods+1] = {215.75, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. init_speed .. 'x', pn}
+	
 	mods[#mods+1] = {228, '\' *' .. 0.861*(init_speed - 0.5) .. ' ' .. 0.5 .. 'x', pn}
 	mods[#mods+1] = {231, '\' *' .. 5.155*(init_speed - 0.5) .. ' ' .. init_speed .. 'x', pn}
 end
@@ -56,13 +92,14 @@ local function song_init()
 	init_player_speed = {} -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
 	checked = false;
 	
-	-- timed mod management, curmod contains a counter for each player
+	-- Timed mod management, curmod contains a counter for each player
 	curmod = {}
 	for pn=1,max_players do
 		curmod[pn] = 1
 	end
 	
 	-- {beat,mod,player}
+	-- The mods here are independent of the players' options and meant to be applied to everyone
 	mods = {
 
 		{119, '*1000 74x'},
