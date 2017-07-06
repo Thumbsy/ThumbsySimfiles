@@ -12,7 +12,7 @@
 		Type="Quad"
 		InitCommand="hidden,1"
 		OnCommand="%function(self)
-			function inject_speed_mods(init_speed, pn, mode)
+			function rt74_inject_speed_mods(init_speed, pn, mode)
 				-- Set some default values in case we're playing the file in the editor. Make sure to have the speed setting in the editor match this default value.
 				if mode == 'editor' then
 					init_speed = 3
@@ -22,23 +22,23 @@
 				-- The going back and forth both happen in equal amounts of time (in other words, half the total time it takes for the effect to be applied and undone).
 				-- 'beat' is the beat at which the effect starts, 'undo_after' the amount of beats after which the reversing starts, 'base_rate' is the base rate (lol), 'muliplier' is the factor we multiply the speed with.
 				local function linear_breathing(beat, undo_after, base_rate, multiplier)
-					mods[table.getn(mods)+1] = {beat, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. multiplier*init_speed .. 'x', pn}
-					mods[table.getn(mods)+1] = {beat+undo_after, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. init_speed .. 'x', pn}
+					rt74_mods[table.getn(rt74_mods)+1] = {beat, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. multiplier*init_speed .. 'x', pn}
+					rt74_mods[table.getn(rt74_mods)+1] = {beat+undo_after, '\' *' .. base_rate*(math.abs(multiplier*init_speed - init_speed)) .. ' ' .. init_speed .. 'x', pn}
 				end
 				
 				-- ============================================================================================================
 				-- Here we add our player-tailored speed mods to the mod table.
 				-- We can't use double-quotation characters, so we escape the apostrophe instead.
-				-- What we want to do here is insert tables into mods[], with variable values.
-				-- The format of these tables is as seen in the mods[] table.
+				-- What we want to do here is insert tables into rt74_mods[], with variable values.
+				-- The format of these tables is as seen in the rt74_mods[] table.
 				
 				-- If we want our speed mod tweens to be in time to the beat, we need to calculate what I call the 'base rate'.
 				-- We do this by dividing 1 by the amount of time (in seconds) you want the transition to take.
 				-- ============================================================================================================
 				
-				mods[table.getn(mods)+1] = {0, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn} -- Immediately set all of our players to XMod at the beginning
-				mods[table.getn(mods)+1] = {99.75, '\' *' .. 1.148*(init_speed-0.75) .. ' ' .. 0.75 .. 'x', pn}
-				mods[table.getn(mods)+1] = {102, '\' *' .. 1.292*(init_speed-0.75) .. ' ' .. init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {0, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn} -- Immediately set all of our players to XMod at the beginning
+				rt74_mods[table.getn(rt74_mods)+1] = {99.75, '\' *' .. 1.148*(init_speed-0.75) .. ' ' .. 0.75 .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {102, '\' *' .. 1.292*(init_speed-0.75) .. ' ' .. init_speed .. 'x', pn}
 				
 				-- Let me see you bounce!
 				linear_breathing(104, 0.125, 10.417, 1.5)
@@ -64,10 +64,10 @@
 				linear_breathing(117.5, 0.125, 10.417, 1.5)
 				
 				-- Yes sorry that was kind of mean. But it fits the music well, right?
-				mods[table.getn(mods)+1] = {119.5, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {119.5, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
 				
 				-- Itchy glitchy~
-				mods[table.getn(mods)+1] = {192.25, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {192.25, '\' *' .. 1000 .. ' ' .. init_speed .. 'x', pn}
 				linear_breathing(196.5, 0.0625, 40, 1.5)
 				linear_breathing(196.625, 0.0625, 40, 1.5)
 				linear_breathing(196.75, 0.0625, 40, 1.5)
@@ -78,25 +78,25 @@
 				linear_breathing(198.667, 0.083, 15.385, 2)
 				
 				-- Yes you can have your speed back
-				mods[table.getn(mods)+1] = {209, '\' *' .. 5.181*(init_speed - 0.25*init_speed) .. ' ' .. 0.25*init_speed .. 'x', pn}
-				mods[table.getn(mods)+1] = {215, '\' *' .. 10.362*(init_speed - 0.5*init_speed) .. ' ' .. 0.75*init_speed .. 'x', pn}
-				mods[table.getn(mods)+1] = {215.25, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. 0.5*init_speed .. 'x', pn}
-				mods[table.getn(mods)+1] = {215.5, '\' *' .. 10.362*(init_speed - 0.75*init_speed) .. ' ' .. 1.25*init_speed .. 'x', pn}
-				mods[table.getn(mods)+1] = {215.75, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {209, '\' *' .. 5.181*(init_speed - 0.25*init_speed) .. ' ' .. 0.25*init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {215, '\' *' .. 10.362*(init_speed - 0.5*init_speed) .. ' ' .. 0.75*init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {215.25, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. 0.5*init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {215.5, '\' *' .. 10.362*(init_speed - 0.75*init_speed) .. ' ' .. 1.25*init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {215.75, '\' *' .. 10.362*(init_speed - 0.25*init_speed) .. ' ' .. init_speed .. 'x', pn}
 				
-				mods[table.getn(mods)+1] = {228, '\' *' .. 0.861*(init_speed - 0.5) .. ' ' .. 0.5 .. 'x', pn}
-				mods[table.getn(mods)+1] = {231, '\' *' .. 5.155*(init_speed - 0.5) .. ' ' .. init_speed .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {228, '\' *' .. 0.861*(init_speed - 0.5) .. ' ' .. 0.5 .. 'x', pn}
+				rt74_mods[table.getn(rt74_mods)+1] = {231, '\' *' .. 5.155*(init_speed - 0.5) .. ' ' .. init_speed .. 'x', pn}
 			end
 		
-			checked = false
-			prefix_time = 0
-			max_players = 2
-			bpm = 155
-			init_player_speed = {} -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
+			rt74_checked = false
+			rt74_time = 0
+			rt74_max_players = 2
+			rt74_bpm = 155
+			rt74_init_player_speed = {} -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
 			
 			-- {beat,mod,player}
 			-- The mods here are independent of the players' options and meant to be applied to everyone
-			mods = {
+			rt74_mods = {
 				{119, '*1000 74x'},
 				{192, '*1000 0.5x'},
 			}
@@ -112,10 +112,10 @@
 			-- Mod reader code, beat-based and oITG editor friendly --
 			----------------------------------------------------------
 			-- Small edit on WinDEU's take on the code originally by TaroNuke
-			-- Loop through the entries in mods[], first checking the first entry of the table (which holds the beat value).
+			-- Loop through the entries in rt74_mods[], first checking the first entry of the table (which holds the beat value).
 			-- If the mod needs to be applied, check whether the table holds three values (which indicates the mod being targeted at a specific player).
 			-- The mod is then applied, either for a specific player or for both.
-			for i,v in pairs(mods) do
+			for i,v in pairs(rt74_mods) do
 				if beat >= v[1] and (beat-v[1]) < 1 then
 					if table.getn(v) == 3 then
 						GAMESTATE:ApplyGameCommand('mod,'..v[2],v[3])
@@ -125,14 +125,14 @@
 				end
 			end
 			
-			if beat >= 0 and not checked then
+			if beat >= 0 and not rt74_checked then
 				-- Obtain initial speed settings of the players, then add speed mods to the mod table based on these initial speeds.
 				-- Speed mod will be set to XMod for all players regardless of what they pick, with the XMod based on their speed setting
 				-- Thanks to Jerros for sharing very useful code to make this easier!
 				if SCREENMAN:GetTopScreen():GetChild('PlayerP1') or SCREENMAN:GetTopScreen():GetChild('PlayerP2') then
 					if SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP1') or SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP2') then
 						-- SCREENMAN:SystemMessage('Game mode')
-						for pn=1,max_players do
+						for pn=1,rt74_max_players do
 							if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn) then
 								local s = SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP'..pn):GetText()
 								local f = string.find(s,'x,')
@@ -142,7 +142,7 @@
 								elseif string.sub(s,1,1) == 'C' then
 									-- Player set CMod. Read out their speed setting and convert it to the right XMod rate.
 									local len = string.find(s,',')-1
-									speed = tonumber(string.sub(s,2,len))/bpm
+									speed = tonumber(string.sub(s,2,len))/rt74_bpm
 									
 								elseif string.sub(s,1,1) == 'm' then
 									-- Player set mMod. Which isn't tweenable. rip
@@ -151,24 +151,24 @@
 									SCREENMAN:SystemMessage('MMod is NOT supported, please use CMod or enjoy your nausea')
 								end
 								
-								init_player_speed[pn] = speed
-								inject_speed_mods(init_player_speed[pn], pn)
+								rt74_init_player_speed[pn] = speed
+								rt74_inject_speed_mods(rt74_init_player_speed[pn], pn)
 							end
 						end
 					else
 						-- Apparently PlayerOptionsP1/2 returns nil, which means we're in FUCK's editor
 						-- SCREENMAN:SystemMessage('FUCK editor mode')
-						for pn=1,max_players do
-							inject_speed_mods(init_player_speed[pn], pn, 'editor')
+						for pn=1,rt74_max_players do
+							rt74_inject_speed_mods(rt74_init_player_speed[pn], pn, 'editor')
 						end
 					end
 				else
 					-- Apparently PlayerP1/2 returns nil, which means we're in the SM3.95/oITG editor
 					-- SCREENMAN:SystemMessage('oITG editor mode')
-					inject_speed_mods(init_player_speed[pn], pn, 'editor')
+					rt74_inject_speed_mods(rt74_init_player_speed[pn], pn, 'editor')
 				end
 				
-				checked = true
+				rt74_checked = true
 			end
 						
 			self:queuecommand('Update2')
@@ -187,7 +187,7 @@
 		Font="Common Normal"
 		Text="test"
 		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
-		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); prefix_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); rt74_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
 	/>
 	
 </children></ActorFrame>
