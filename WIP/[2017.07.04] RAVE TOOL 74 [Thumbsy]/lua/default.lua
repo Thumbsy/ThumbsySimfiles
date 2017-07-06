@@ -14,7 +14,7 @@ end
 local function inject_speed_mods(init_speed, pn, mode)
 	-- Set some default values in case we're playing the file in the editor. Make sure to have the speed setting in the editor match this default value.
 	if mode == 'editor' then
-		init_speed = 3;
+		init_speed = 3
 	end
 	
 	-- Quick little function I threw together to make the 'breathing' effect, allowing you to easily add a effect where the notes compress/decompress from/to init_speed.
@@ -88,9 +88,10 @@ local function inject_speed_mods(init_speed, pn, mode)
 end
 
 local function song_init()
-	max_players = 2;
+	max_players = 2
 	init_player_speed = {} -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
-	checked = false;
+	bpm = 155
+	checked = false
 	
 	-- Timed mod management, curmod contains a counter for each player
 	curmod = {}
@@ -115,37 +116,43 @@ local function song_update()
 		-- Obtain initial speed settings of the players, then add speed mods to the mod table based on these initial speeds.
 		-- Thanks to Jerros for sharing very useful code to make this easier!
 		if SCREENMAN:GetTopScreen():GetChild('PlayerP1') or SCREENMAN:GetTopScreen():GetChild('PlayerP2') then
-			-- SCREENMAN:SystemMessage('Game mode');
+			-- SCREENMAN:SystemMessage('Game mode')
 			for pn=1,max_players do
 				if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn) then
-					local s = SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP'..pn):GetText();
-					local f = string.find(s,'x,');
-					local speed = 1;
+					local s = GAMESTATE:GetPlayerState('PlayerNumber_P' .. pn):GetPlayerOptionsString('ModsLevel_Song')
+					local f = string.find(s,'x,')
+					local speed = 1
 					if f then
-						speed = tonumber(string.sub(s,1,f-1));
-					elseif string.sub(s,1,1) == 'C' or string.sub(s,1,1) == 'm' then
-						-- Player set either CMod or mMod. Read out their speed setting and convert it to the right XMod rate.
-						local len = string.find(s,',')-1;
-						speed = tonumber(string.sub(s,2,len))/bpm;
+						speed = tonumber(string.sub(s,1,f-1))
+					elseif string.sub(s,1,1) == 'C' then
+						-- Player set CMod. Read out their speed setting and convert it to the right XMod rate.
+						local len = string.find(s,',')-1
+						speed = tonumber(string.sub(s,2,len))/bpm
+						
+					elseif string.sub(s,1,1) == 'm' then
+						-- Player set mMod. Which isn't tweenable. rip
+						-- Welp get rekt mMod players, go pick CMod next time.
+						SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):spin():effectclock('beat'):effectmagnitude(0,0,360)
+						SCREENMAN:SystemMessage('MMod is NOT supported, please use CMod or enjoy your nausea')
 					end
 					
-					init_player_speed[pn] = speed;
-					inject_speed_mods(init_player_speed[pn], pn);
+					init_player_speed[pn] = speed
+					inject_speed_mods(init_player_speed[pn], pn)
 				end
 			end
 		else
 			-- If we end up here PlayerP1/2 returns nil, which probably means we're in the editor
-			-- SCREENMAN:SystemMessage('SM5 editor mode');
-			inject_speed_mods(init_player_speed[pn], pn, 'editor');
+			-- SCREENMAN:SystemMessage('SM5 editor mode')
+			inject_speed_mods(init_player_speed[pn], pn, 'editor')
 		end
 		
 		-- The mod reading code doesn't work correctly when the table is unsorted, so we sort them based on the beat here.
 		local function compare(a,b)
 			return a[1] < b[1]
 		end
-		table.sort(mods, compare);
+		table.sort(mods, compare)
 		
-		checked = true;
+		checked = true
 		
 	end
 	

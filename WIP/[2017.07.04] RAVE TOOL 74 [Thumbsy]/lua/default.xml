@@ -15,7 +15,7 @@
 			function inject_speed_mods(init_speed, pn, mode)
 				-- Set some default values in case we're playing the file in the editor. Make sure to have the speed setting in the editor match this default value.
 				if mode == 'editor' then
-					init_speed = 3;
+					init_speed = 3
 				end
 				
 				-- Quick little function I threw together to make the 'breathing' effect, allowing you to easily add a effect where the notes compress/decompress from/to init_speed.
@@ -88,11 +88,11 @@
 				mods[table.getn(mods)+1] = {231, '\' *' .. 5.155*(init_speed - 0.5) .. ' ' .. init_speed .. 'x', pn}
 			end
 		
-			checked = false;
-			prefix_time = 0;
-			max_players = 2;
-			bpm = 155;
-			init_player_speed = {}; -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
+			checked = false
+			prefix_time = 0
+			max_players = 2
+			bpm = 155
+			init_player_speed = {} -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
 			
 			-- {beat,mod,player}
 			-- The mods here are independent of the players' options and meant to be applied to everyone
@@ -101,12 +101,12 @@
 				{192, '*1000 0.5x'},
 			}
 						
-			self:queuecommand('Update');
+			self:queuecommand('Update')
 		end"
 		
 		UpdateCommand="%function(self)
 		
-			local beat = GAMESTATE:GetSongBeat();
+			local beat = GAMESTATE:GetSongBeat()
 						
 			----------------------------------------------------------
 			-- Mod reader code, beat-based and oITG editor friendly --
@@ -118,9 +118,9 @@
 			for i,v in pairs(mods) do
 				if beat >= v[1] and (beat-v[1]) < 1 then
 					if table.getn(v) == 3 then
-						GAMESTATE:ApplyGameCommand('mod,'..v[2],v[3]);
+						GAMESTATE:ApplyGameCommand('mod,'..v[2],v[3])
 					else
-						GAMESTATE:ApplyGameCommand('mod,'..v[2]);
+						GAMESTATE:ApplyGameCommand('mod,'..v[2])
 					end
 				end
 			end
@@ -131,48 +131,54 @@
 				-- Thanks to Jerros for sharing very useful code to make this easier!
 				if SCREENMAN:GetTopScreen():GetChild('PlayerP1') or SCREENMAN:GetTopScreen():GetChild('PlayerP2') then
 					if SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP1') or SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP2') then
-						-- SCREENMAN:SystemMessage('Game mode');
+						-- SCREENMAN:SystemMessage('Game mode')
 						for pn=1,max_players do
 							if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn) then
-								local s = SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP'..pn):GetText();
-								local f = string.find(s,'x,');
-								local speed = 1;
+								local s = SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP'..pn):GetText()
+								local f = string.find(s,'x,')
+								local speed = 1
 								if f then
-									speed = tonumber(string.sub(s,1,f-1));
-								elseif string.sub(s,1,1) == 'C' or string.sub(s,1,1) == 'm' then
-									-- Player set either CMod or mMod. Read out their speed setting and convert it to the right XMod rate.
-									local len = string.find(s,',')-1;
-									speed = tonumber(string.sub(s,2,len))/bpm;
+									speed = tonumber(string.sub(s,1,f-1))
+								elseif string.sub(s,1,1) == 'C' then
+									-- Player set CMod. Read out their speed setting and convert it to the right XMod rate.
+									local len = string.find(s,',')-1
+									speed = tonumber(string.sub(s,2,len))/bpm
+									
+								elseif string.sub(s,1,1) == 'm' then
+									-- Player set mMod. Which isn't tweenable. rip
+									-- Welp get rekt mMod players, go pick CMod next time.
+									SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):spin():effectclock('beat'):effectmagnitude(0,0,360)
+									SCREENMAN:SystemMessage('MMod is NOT supported, please use CMod or enjoy your nausea')
 								end
 								
-								init_player_speed[pn] = speed;
-								inject_speed_mods(init_player_speed[pn], pn);
+								init_player_speed[pn] = speed
+								inject_speed_mods(init_player_speed[pn], pn)
 							end
 						end
 					else
 						-- Apparently PlayerOptionsP1/2 returns nil, which means we're in FUCK's editor
-						-- SCREENMAN:SystemMessage('FUCK editor mode');
+						-- SCREENMAN:SystemMessage('FUCK editor mode')
 						for pn=1,max_players do
-							inject_speed_mods(init_player_speed[pn], pn, 'editor');
+							inject_speed_mods(init_player_speed[pn], pn, 'editor')
 						end
 					end
 				else
 					-- Apparently PlayerP1/2 returns nil, which means we're in the SM3.95/oITG editor
-					-- SCREENMAN:SystemMessage('oITG editor mode');
-					inject_speed_mods(init_player_speed[pn], pn, 'editor');
+					-- SCREENMAN:SystemMessage('oITG editor mode')
+					inject_speed_mods(init_player_speed[pn], pn, 'editor')
 				end
 				
-				checked = true;
+				checked = true
 			end
 						
-			self:queuecommand('Update2');
+			self:queuecommand('Update2')
 			
 		end"
 
 
 		Update2Command="%function(self)
-		self:sleep(0.02);
-		self:queuecommand('Update');
+		self:sleep(0.02)
+		self:queuecommand('Update')
 		end"
 
 	/>
