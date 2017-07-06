@@ -1,0 +1,116 @@
+<!-- Template taken from WinDEU: https://www.twitch.tv/windeu/v/58522987 -->
+
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+				fgcurcommand = 1
+				checked = false
+				dadada_time = 0
+				
+				dadada_curmessage = 1
+				
+				dadada_mods = {
+					{234, '*20 -200% Mini'},
+				}
+				
+				dadada_plr = {}
+				
+				self:queuecommand('Update')
+			end"
+		
+		UpdateCommand="%function(self)
+		
+			local beat = GAMESTATE:GetSongBeat();
+						
+			----------------------------------------------------------------------------------------------------------------------------------------------
+			-- Mod reader code originally coded by Taronuke, remade to support end times and lengths by WinDEU, then re-adjusted to be beat-based again --
+			----------------------------------------------------------------------------------------------------------------------------------------------
+			for i,v in pairs(dadada_mods) do
+				if beat >= v[1] then
+					if table.getn(v) == 3 then
+						GAMESTATE:ApplyGameCommand('mod,'..v[2],v[3])
+					else
+						GAMESTATE:ApplyGameCommand('mod,'..v[2])
+					end
+				end
+			end
+			
+			
+			
+			if beat >= 0 and not checked then
+				
+				table.insert(dadada_plr,SCREENMAN:GetTopScreen():GetChild('PlayerP1'));
+				table.insert(dadada_plr,SCREENMAN:GetTopScreen():GetChild('PlayerP2'));
+				checked = true;
+				
+			end
+			
+			--[[
+			if beat >= 194 and fgcurcommand == 1 then
+				for i,v in pairs(dadada_plr) do
+					local multi = -1; if i == 2 then multi = 1; end
+					if v then
+						v:decelerate(240/135/8*3);
+						v:x(SCREEN_CENTER_X);
+						v:GetChild('Judgment'):x(160*multi);
+						v:GetChild('Combo'):x(160*multi);
+						v:rotationy(1440*multi);
+					end
+				end
+				fgcurcommand = fgcurcommand + 1;
+			end
+			]]
+			
+			
+			-------------------------
+			-- BEAT SPECIFIC STUFF --
+			-------------------------
+			if beat >= 234.000 then
+				MESSAGEMAN:Broadcast('Pwoap')
+			end
+			
+			if beat >= 234.667 then
+				MESSAGEMAN:Broadcast('BlackOut')
+			end
+			
+			self:queuecommand('Update2')
+			
+		end"
+
+
+		Update2Command="%function(self)
+		self:sleep(0.02)
+		self:queuecommand('Update')
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); dadada_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+	
+	<Layer
+		File="mfw"
+		OnCommand="diffusealpha,0;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;zoom,1;"
+		PwoapMessageCommand="diffusealpha,1"
+	/>
+	
+	<Layer
+		Type="Quad"
+		OnCommand="zoom,9999;diffuse,#00000000"
+		BlackOutMessageCommand="diffusealpha,1"
+	/>
+	
+</children></ActorFrame>
