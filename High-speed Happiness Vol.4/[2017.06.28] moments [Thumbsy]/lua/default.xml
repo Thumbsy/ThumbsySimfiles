@@ -1,0 +1,146 @@
+<!-- Template taken from WinDEU: https://www.twitch.tv/windeu/v/58522987 -->
+
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+			function inject_speed_mods(init_speed, pn, mode)
+				-- Set some default values in case we're playing the file in the editor
+				if mode == 'editor' then
+					init_speed = 2;
+					pn = 1;
+				end
+				
+				-- Here we add our player-tailored speed mods to the mod table.
+				-- We can't use double-quotation characters, so we escape the apostrophe instead.
+				-- What we want to do here is insert tables into mods[], with variable values.
+				-- The first table below would for example be {204, ' *25 9x, 1}
+				-- if player 1 has set their xmod to 2x
+				mods[table.getn(mods)+1] = {204, '\' *25 ' .. 4.5*init_speed .. 'x', pn}
+				mods[table.getn(mods)+1] = {204.875, '\' *64 ' .. init_speed .. 'x', pn}
+				mods[table.getn(mods)+1] = {212, '\' *25 ' .. 4.5*init_speed .. 'x', pn}
+				mods[table.getn(mods)+1] = {212.875, '\' *64 ' .. init_speed .. 'x', pn}
+				mods[table.getn(mods)+1] = {220, '\' *25 ' .. 4.5*init_speed .. 'x', pn}
+				mods[table.getn(mods)+1] = {220.875, '\' *64 ' .. init_speed .. 'x', pn}
+			end
+		
+			checked = false;
+			prefix_time = 0;
+			max_players = 2;
+			player_speed_type = {}; -- This table stores the speed mod type the player chose. In this case, we only store it when someone chose XMod. Otherwise a dummy value is filled in. First entry is first player.
+			init_player_speed = {}; -- This table stores the value of the XMod that the player chose. Left as nil otherwise. First entry is first player.
+						
+			mods = {
+				{19, '*1000 50% Stealth'},
+				{19.125, '*1000 No Stealth'},
+				{19.25, '*1000 50% Stealth'},
+				{19.375, '*1000 No Stealth'},
+				{19.5, '*1000 50% Stealth'},
+				{19.625, '*1000 No Stealth'},
+				{19.75, '*1000 50% Stealth'},
+				{19.875, '*1000 No Stealth'},
+				{64, '*1000 Stealth'},
+				{64.5, '*0.9728 50% Stealth'},
+				{66, '*2.9155 No Stealth'},
+				{267, '*1000 50% Stealth'},
+				{267.125, '*1000 No Stealth'},
+				{267.25, '*1000 50% Stealth'},
+				{267.375, '*1000 No Stealth'},
+				{267.5, '*1000 50% Stealth'},
+				{267.625, '*1000 No Stealth'},
+				{267.75, '*1000 50% Stealth'},
+				{267.875, '*1000 No Stealth'},
+			}
+						
+			self:queuecommand('Update');
+		end"
+		
+		UpdateCommand="%function(self)
+		
+			local beat = GAMESTATE:GetSongBeat();
+						
+			----------------------------------------------------------
+			-- Mod reader code, beat-based and oITG editor friendly --
+			----------------------------------------------------------
+			-- Small edit on WinDEU's take on the code originally by TaroNuke
+			-- Loop through the entries in mods[], first checking the first entry of the table (which holds the beat value).
+			-- If the mod needs to be applied, check whether the table holds three values (which indicates the mod being targeted at a specific player).
+			-- The mod is then applied, either for a specific player or for both.
+			for i,v in pairs(mods) do
+				if beat >= v[1] and (beat-v[1]) < 1 then
+					if table.getn(v) == 3 then
+						GAMESTATE:ApplyGameCommand('mod,'..v[2],v[3]);
+					else
+						GAMESTATE:ApplyGameCommand('mod,'..v[2]);
+					end
+				end
+			end
+			
+			if beat >= 0 and not checked then
+				-- Obtain initial speed settings of the players, then add speed mods to the mod table based on these initial speeds.
+				-- Thanks to Jerros for sharing very useful code to make this easier!
+				if SCREENMAN:GetTopScreen():GetChild('PlayerP1') or SCREENMAN:GetTopScreen():GetChild('PlayerP2') then
+					if SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP1') or SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP2') then
+						-- SCREENMAN:SystemMessage('Game mode');
+						for pn=1,max_players do
+							if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn) then
+								local s = SCREENMAN:GetTopScreen():GetChild('PlayerOptionsP'..pn):GetText();
+								local f = string.find(s,'x,');
+								local speed = 1;
+								if f then
+									speed = tonumber(string.sub(s,1,f-1));
+									player_speed_type[pn] = 'XMod';
+								elseif string.sub(s,1,1) ~= 'C' and string.sub(s,1,1) ~= 'm' then
+									-- If we got here, it means the player set 1x (which doesn't get explicitly mentioned in the PlayerOptions)
+									-- Since the variable speed is set as 1 by default, we only need to fill in player_speed_type[] here.
+									player_speed_type[pn] = 'XMod';
+								end
+								init_player_speed[pn] = speed;
+																
+								if player_speed_type[pn] == 'XMod' then
+									inject_speed_mods(init_player_speed[pn], pn);
+								end
+							end
+						end
+					else
+						-- Apparently PlayerOptionsP1/2 returns nil, which means we're in FUCK's editor
+						-- SCREENMAN:SystemMessage('FUCK editor mode');
+						inject_speed_mods(init_player_speed[pn], pn, 'editor');
+					end
+				else
+					-- Apparently PlayerP1/2 returns nil, which means we're in the SM3.95/oITG editor
+					-- SCREENMAN:SystemMessage('oITG editor mode');
+					inject_speed_mods(init_player_speed[pn], pn, 'editor');
+				end
+				
+				checked = true;
+			end
+						
+			self:queuecommand('Update2');
+			
+		end"
+
+
+		Update2Command="%function(self)
+		self:sleep(0.02);
+		self:queuecommand('Update');
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); prefix_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+	
+</children></ActorFrame>
