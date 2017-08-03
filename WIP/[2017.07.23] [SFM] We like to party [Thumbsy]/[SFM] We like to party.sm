@@ -19,8 +19,11 @@
 ,68.000=135.771
 ;
 #STOPS:;
-#BGCHANGES:;
-#FGCHANGES:;
+#BGCHANGES:3.909=[SFM] We like to party.avi=1.000=0=0=0=StretchNoLoop====,
+100.000=ending.png=1.000=0=0=1,
+99999.000=-nosongbg-=1.000=0=0=0=StretchNoLoop====
+;
+#FGCHANGES:0.000=weliketolua=1.000=0=0=1;
 //--------------- dance-single - Thumbsy ----------------
 #NOTES:
      dance-single:
