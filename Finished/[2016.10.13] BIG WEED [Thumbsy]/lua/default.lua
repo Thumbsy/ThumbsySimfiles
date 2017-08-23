@@ -61,12 +61,12 @@ local function song_update()
 		screen = SCREENMAN:GetTopScreen()
 		screen:stopeffect()
 		screen:x(0)
-				
+		
+		weed_index = 1
 		for i=1,max_players do
-			local weed_index = 1
 			if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
 				enabled_players[weed_index] = i;
-				weed_index = weed_index + 1;
+				weed_index = weed_index + 1;				
 			end
 		end
 		
