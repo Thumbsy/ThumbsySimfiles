@@ -8,8 +8,8 @@ end
 
 
 local function song_mod(str)
-	for i=1,2 do
-		song_mod_internal(str, 'PlayerNumber_P' .. i)
+	for i=1,#enabled_players do
+		song_mod_internal(str, 'PlayerNumber_P' .. enabled_players[i])
 	end
 end
 
@@ -18,7 +18,8 @@ end
 local function song_init()
 	fgcurcommand = 0;
 	checked = false;
-	max_players = #GAMESTATE:GetHumanPlayers()
+	max_players = 16;
+	enabled_players = {};
 	
 	
 	-- lua course :D	/ timed mod management	
@@ -56,10 +57,18 @@ end
 local function song_update()
 
 	if GAMESTATE:GetSongBeat()>=0.1 and not checked then
-				
+		
 		screen = SCREENMAN:GetTopScreen()
 		screen:stopeffect()
 		screen:x(0)
+				
+		for i=1,max_players do
+			local weed_index = 1
+			if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
+				enabled_players[weed_index] = i;
+				weed_index = weed_index + 1;
+			end
+		end
 		
 		checked = true
 		
@@ -148,9 +157,9 @@ return Def.ActorFrame{
 			screen:vibrate()
 			screen:effectmagnitude(20,20,20)
 						
-			for i=1,max_players do
-				if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
-					local pl = screen:GetLifeMeter('PlayerNumber_P' .. i)
+			for i=1,#enabled_players do
+				if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. enabled_players[i]) then
+					local pl = screen:GetLifeMeter('PlayerNumber_P' .. enabled_players[i])
 					pl:spin();
 					pl:effectperiod(1);
 					pl:effectclock('beat');
@@ -162,9 +171,9 @@ return Def.ActorFrame{
 		StopEverythingMessageCommand= function(self)
 			screen:stopeffect();
 			
-			for i=1,max_players do
-				if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
-					screen:GetLifeMeter('PlayerNumber_P' .. i):stopeffect()
+			for i=1,#enabled_players do
+				if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. enabled_players[i]) then
+					screen:GetLifeMeter('PlayerNumber_P' .. enabled_players[i]):stopeffect()
 				end
 			end
 			
