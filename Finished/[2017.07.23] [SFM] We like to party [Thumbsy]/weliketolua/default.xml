@@ -1,0 +1,182 @@
+<!-- Based on WinDEU's template: https://www.twitch.tv/windeu/v/58522987 -->
+
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)		
+			wltp_fgcurcommand = {
+				'bounce_vertically',
+				'skew_plrs1',
+				'skew_plrs2',
+				'bob_horizontally',
+				'STOP1',
+				'angery_thomas',
+				'angery_thomas_intensifies',
+				'STOP2',
+			}
+			wltp_fg_cnt = 1
+			wltp_checked = false
+			wltp_time = 0
+			wltp_max_players = 2
+			
+			wltp_plr = {}
+			wltp_plrxpos = {}
+						
+			self:queuecommand('Update')
+		end"
+		
+		UpdateCommand="%function(self)
+		
+			local beat = GAMESTATE:GetSongBeat()
+									
+			if beat >= 0 and not wltp_checked then
+				for pn=1,wltp_max_players do
+					if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn) then
+						table.insert(wltp_plr,SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn))
+						table.insert(wltp_plrxpos, wltp_plr[table.getn(wltp_plr)]:GetX())
+					end
+				end
+							
+				wltp_checked = true
+			end
+			
+			-- ==================
+			-- == SILLY THINGS ==
+			-- ==================
+			if beat > 4 and wltp_fgcurcommand[wltp_fg_cnt] == 'bounce_vertically' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:bounce()
+						v:effectmagnitude(0,100,0)
+						v:effectperiod(1)
+						v:effectclock('beat')
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+			
+			if beat > 20 and wltp_fgcurcommand[wltp_fg_cnt] == 'skew_plrs1' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:linear(0.111)
+						v:rotationx(65)
+						v:rotationy(20)
+						v:rotationz(-20)
+						v:sleep(0.993)
+						v:linear(0.114)
+						v:rotationy(0)
+						v:rotationx(0)
+						v:rotationz(0)
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+
+			if beat > 23.75 and wltp_fgcurcommand[wltp_fg_cnt] == 'skew_plrs2' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:linear(0.110)
+						v:rotationx(65)
+						v:rotationy(20)
+						v:rotationz(-20)
+						v:sleep(0.993)
+						v:linear(0.114)
+						v:rotationy(0)
+						v:rotationx(0)
+						v:rotationz(0)
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+			
+			if beat > 36 and wltp_fgcurcommand[wltp_fg_cnt] == 'bob_horizontally' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:x(wltp_plrxpos[i] + 50*math.sin(beat*math.pi + i*math.pi))
+					end
+				end
+				
+				if beat > 64 then
+					wltp_fg_cnt = wltp_fg_cnt + 1
+				end
+			end
+			
+			if beat > 64 and wltp_fgcurcommand[wltp_fg_cnt] == 'STOP1' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:x(wltp_plrxpos[i])
+						v:stopeffect()
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+			
+			if beat > 68 and wltp_fgcurcommand[wltp_fg_cnt] == 'angery_thomas' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:vibrate()
+						v:effectmagnitude(30,30,0)
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+			
+			if beat > 68 and beat < 98 then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:zoom(1 + 0.25*math.sin(beat*math.pi + i*math.pi))
+					end
+				end
+			end
+			
+			if beat > 98 and wltp_fgcurcommand[wltp_fg_cnt] == 'angery_thomas_intensifies' then
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:linear(1)
+						v:vibrate()
+						v:effectmagnitude(50,50,0)
+						v:zoom(2)
+					end
+				end
+				wltp_fg_cnt = wltp_fg_cnt + 1
+			end
+			
+			if beat > 100 and wltp_fgcurcommand[wltp_fg_cnt] == 'STOP2' then
+			
+				for i,v in pairs(wltp_plr) do
+					if v then
+						v:stopeffect()
+						v:stoptweening()
+						v:zoom(1)
+					end
+				end
+			end
+			
+			self:queuecommand('Update2')
+			
+		end"
+
+
+		Update2Command="%function(self)
+		self:sleep(0.02)
+		self:queuecommand('Update')
+		end"
+
+	/>
+	
+	<BitmapText
+		Font="Common Normal"
+		Text="test"
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;effectclock,music;playcommand,SetTime;hidden,1"
+		SetTimeCommand="%function(self) self:settext(self:GetSecsIntoEffect()); wltp_time = tonumber(self:GetText()); self:sleep(0.02); self:queuecommand('SetTime'); end"
+	/>
+	
+</children></ActorFrame>

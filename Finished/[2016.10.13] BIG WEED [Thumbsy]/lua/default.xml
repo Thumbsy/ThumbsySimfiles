@@ -15,6 +15,8 @@
 			fgcurcommand = 1;
 			checked = false;
 			prefix_time = 0;
+			max_players = 16;
+			enabled_players = {};
 			
 			prefix_curmessage = 1;
 			
@@ -41,6 +43,7 @@
 		UpdateCommand="%function(self)
 		
 			local beat = GAMESTATE:GetSongBeat();
+			local weed_index = 1;
 						
 			--------------------------------------------------------------------------------------------
 			-- Mod reader code originally coded by Taronuke, remade to support end times and lengths. --
@@ -59,7 +62,15 @@
 			
 			
 			
-			if beat >= 0 and not checked then								
+			if beat >= 0 and not checked then
+			
+				for i=1,max_players do
+					if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
+						enabled_players[weed_index] = i;
+						weed_index = weed_index + 1;
+					end
+				end
+				
 				SCREENMAN:GetTopScreen():x(0);
 				SCREENMAN:GetTopScreen():rotationz(0);
 				SCREENMAN:GetTopScreen():stopeffect();
@@ -119,15 +130,13 @@
 				SCREENMAN:GetTopScreen():GetChild('Overlay'):spin();
 				SCREENMAN:GetTopScreen():GetChild('Overlay'):effectmagnitude(0,0,720);
 				
-				for i=1,2 do
-					if GAMESTATE:IsPlayerEnabled(i-1) then
-						local pl = SCREENMAN:GetTopScreen():GetChild('LifeP'..i);
-						local ps = SCREENMAN:GetTopScreen():GetChild('ScoreP'..i);
-						pl:spin();
-						pl:effectmagnitude(0,0,360);
-						ps:spin();
-						ps:effectmagnitude(0,0,360);
-					end
+				for i=1,table.getn(enabled_players) do
+					local pl = SCREENMAN:GetTopScreen():GetChild('LifeP'..enabled_players[i]);
+					local ps = SCREENMAN:GetTopScreen():GetChild('ScoreP'..enabled_players[i]);
+					pl:spin();
+					pl:effectmagnitude(0,0,360);
+					ps:spin();
+					ps:effectmagnitude(0,0,360);
 				end
 				
 				fgcurcommand = fgcurcommand + 1;
@@ -137,11 +146,9 @@
 				SCREENMAN:GetTopScreen():stopeffect();
 				SCREENMAN:GetTopScreen():GetChild('Overlay'):stopeffect();
 				
-				for i=1,2 do
-					if GAMESTATE:IsPlayerEnabled(i-1) then
-						SCREENMAN:GetTopScreen():GetChild('LifeP'..i):stopeffect();
-						SCREENMAN:GetTopScreen():GetChild('ScoreP'..i):stopeffect();
-					end
+				for i=1,table.getn(enabled_players) do
+					SCREENMAN:GetTopScreen():GetChild('LifeP'..enabled_players[i]):stopeffect();
+					SCREENMAN:GetTopScreen():GetChild('ScoreP'..enabled_players[i]):stopeffect();
 				end
 				fgcurcommand = fgcurcommand + 1;
 			end

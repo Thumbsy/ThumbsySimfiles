@@ -147,10 +147,12 @@
 								elseif string.sub(s,1,1) == 'm' then
 									-- Player set mMod. Which isn't tweenable. rip
 									-- Welp get rekt mMod players, go pick CMod next time.
-									SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):spin():effectclock('beat'):effectmagnitude(0,0,360)
+									SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):spin()
+									SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):effectclock('beat')
+									SCREENMAN:GetTopScreen():GetChild('PlayerP' .. pn):effectmagnitude(0,0,360)
 									SCREENMAN:SystemMessage('MMod is NOT supported, please use CMod or enjoy your nausea')
-								end
 								
+								end
 								rt74_init_player_speed[pn] = speed
 								rt74_inject_speed_mods(rt74_init_player_speed[pn], pn)
 							end
