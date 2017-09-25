@@ -1,0 +1,40 @@
+<!-- Template based on WinDEU's: https://www.twitch.tv/windeu/v/58522987 -->
+<!-- Last updated on 2017.09.25 -->
+
+<ActorFrame><children>
+
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="sleep,1000"
+	/>
+	
+	<Layer
+		Type="Quad"
+		InitCommand="hidden,1"
+		OnCommand="%function(self)
+			prefix_checked = false
+			
+			self:queuecommand('Update')
+		end"
+		
+		UpdateCommand="%function(self)
+			local beat = GAMESTATE:GetSongBeat()
+			
+			if beat >= 0 and not prefix_checked then
+			
+				prefix_checked = true
+			end
+						
+			self:queuecommand('Update2')
+			
+		end"
+
+
+		Update2Command="%function(self)
+			self:sleep(0.02)
+			self:queuecommand('Update')
+		end"
+	/>
+	
+</children></ActorFrame>
