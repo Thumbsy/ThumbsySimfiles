@@ -1,5 +1,5 @@
 -- This is basically a giant dump where I leave code snippets and bits that can be used in the templates.
--- Last updated on 2017.0925
+-- Last updated on 2017.09.27
 
 
 
@@ -161,11 +161,8 @@
 -- ===================================================================
 -- ===================================================================
 -- Anything that needs to be run continuously between beats x and y
-
--- Add this somewhere inside of UpdateCommand / song_update(), at least before you start using the beat variable
-	local beat = GAMESTATE:GetSongBeat()
 	
--- You can then add this anywhere inside of UpdateCommand / song_update() as long as it's after the above. Replace x and y with the desired values.
+-- Add this anywhere inside of UpdateCommand / song_update() as long as it's after the 'local beat = GAMESTATE:GetSongBeat()' line. Replace x and y with the desired values.
 	if beat > x and beat < y then
 		-- Your code here
 	end
@@ -177,7 +174,7 @@
 -- === REUSABLE CODE THAT NEEDS TO BE RUN ONCE AFTER PASSING THE DESIGNATED BEAT ===
 -- =================================================================================
 -- =================================================================================
--- This allows you to for example apply animations to the screen or player fields for a certain duration
+-- This allows you to for example apply animations to the screen or player fields starting at a specific beat
 
 -- Add this to OnCommand / song_init()
 	prefix_curmessage = 1;
@@ -228,7 +225,7 @@
 -- === OBTAINING AND STORING PLAYERS' INITIAL SPEED MOD TYPE AND VALUE ===
 -- =======================================================================
 -- =======================================================================
--- This bit of script reads out the speed mod for all present players and saves it in a table. Useful for example for applying per-player-tailored speed mods.
+-- This bit of script reads out the speed mod for all present players and saves it in a table. Useful for example for applying per-player-tailored speed mods. In fact, in its current state the script already assumes you're going to do that since the call to prefix_inject_speed_mods() is already in there. You can remove it if you don't need it.
 
 -- Add this to OnCommand / song_init()
 	prefix_player_init_speeds = {} -- prefix_player_init_speeds is a table containing tables of the following format: {player_no, speed_type, init_value}
