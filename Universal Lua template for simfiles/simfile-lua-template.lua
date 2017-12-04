@@ -1,5 +1,5 @@
 -- Template based on Puurokulho's wndrwll: https://www.youtube.com/watch?v=KDWAGbwdA_w
--- Last updated on 2017.09.25
+-- Template last updated on 2017.09.25
 
 local function song_init()
 	checked = false;
@@ -9,6 +9,7 @@ local function song_update()
 	local beat = GAMESTATE:GetSongBeat()
 
 	if beat >= 0 and not checked then
+		
 		
 		checked = true
 	end
