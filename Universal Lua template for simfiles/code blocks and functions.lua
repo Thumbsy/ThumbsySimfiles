@@ -16,7 +16,7 @@
 	prefix_enabled_players_no = {}	-- This table will contain the currently enabled players (just the player numbers, stored as integers)
 	prefix_amount_enabled_players = 0
 
--- Add this to the initialization if-statement inside UpdateCommand / song_update()
+-- For .lua, add this to the initialization if-statement inside UpdateCommand / song_update()
 	-- Save all currently enabled players in the table prefix_enabled_players
 	local en_plrs_index = 1
 	for i=1,prefix_max_players do
@@ -35,6 +35,23 @@
 	
 	for plr=1,prefix_amount_enabled_players do
 		curmod[plr] = 1
+	end
+	
+-- For .xml, add this to the initialization if-statement inside UpdateCommand
+	-- Save all currently enabled players in the table prefix_enabled_players
+	local en_plrs_index = 1
+	for i=1,prefix_max_players do
+		if SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i) then
+			prefix_enabled_players[en_plrs_index] = SCREENMAN:GetTopScreen():GetChild('PlayerP' .. i)
+			prefix_enabled_players_no[en_plrs_index] = i
+			en_plrs_index = en_plrs_index + 1
+		end
+	end
+	
+	if table.getn(prefix_enabled_players) < 1 then
+		prefix_amount_enabled_players = 1
+	else
+		prefix_amount_enabled_players = table.getn(prefix_enabled_players)
 	end
 
 -- You can then use something like this to apply effects to all players (vibrate as an example)
@@ -335,7 +352,7 @@
 -- Add this to OnCommand / song_init()
 	prefix_bpm = [BPM of song here]
 	
--- For .lua, add this anywhere in the file. For .xml, put this at the top inside of OnCommand (DON'T FORGET TO REMOVE THE local KEYWORD IN CASE OF XML)
+-- For .lua, add this anywhere in the file. For .xml, put this at the top inside of OnCommand (DON'T FORGET TO REMOVE THE local KEYWORD IN CASE OF XML AND USE table.getn() INSTEAD OF #)
 	local function prefix_inject_speed_mods()
 		local prev_player_speed = {} -- We need to remember the 'old' speed when we want to calculate the stuff for the new speed, so we save the 'old' speed for each player in this array.
 		
