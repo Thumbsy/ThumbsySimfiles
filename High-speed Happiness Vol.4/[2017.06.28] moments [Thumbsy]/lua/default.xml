@@ -67,15 +67,15 @@
 							
 							if moments_player_init_speeds[index][2] == 'x' then
 								xrate_diff = math.abs(xrate - prev_player_speed[index])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * xrate_diff .. ' ' .. xrate .. 'x', pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * xrate_diff .. ' ' .. xrate .. 'x', pn}
 								prev_player_speed[index] = xrate
 							elseif moments_player_init_speeds[index][2] == 'C' then
 								scroll_diff = math.abs(scroll_speed - prev_player_speed[index])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * scroll_diff) / moments_bpm .. ' ' .. 'C' .. scroll_speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * scroll_diff) / moments_bpm .. ' ' .. 'C' .. scroll_speed, pn}
 								prev_player_speed[index] = scroll_speed
 							elseif moments_player_init_speeds[index][2] == 'm' then
 								scroll_diff = math.abs(scroll_speed - prev_player_speed[index])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * scroll_diff .. ' ' .. 'm' .. scroll_speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * scroll_diff .. ' ' .. 'm' .. scroll_speed, pn}
 								prev_player_speed[index] = scroll_speed
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
@@ -86,15 +86,15 @@
 						for i,v in pairs(moments_player_init_speeds) do
 							if v[2] == 'x' then
 								xrate_diff = math.abs(xrate - prev_player_speed[i])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * xrate_diff .. ' ' .. xrate .. 'x', v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * xrate_diff .. ' ' .. xrate .. 'x', v[1]}
 								prev_player_speed[i] = xrate
 							elseif v[2] == 'C' then
 								scroll_diff = math.abs(scroll_speed - prev_player_speed[i])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * scroll_diff) / moments_bpm .. ' ' .. 'C' .. scroll_speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * scroll_diff) / moments_bpm .. ' ' .. 'C' .. scroll_speed, v[1]}
 								prev_player_speed[i] = scroll_speed
 							elseif v[2] == 'm' then
 								scroll_diff = math.abs(scroll_speed - prev_player_speed[i])
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * scroll_diff .. ' ' .. 'm' .. scroll_speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * scroll_diff .. ' ' .. 'm' .. scroll_speed, v[1]}
 								prev_player_speed[i] = scroll_speed
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
@@ -118,13 +118,13 @@
 							speed_diff = math.abs(speed - prev_player_speed[index])
 							
 							if moments_player_init_speeds[index][2] == 'x' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', pn}
 								prev_player_speed[index] = speed
 							elseif moments_player_init_speeds[index][2] == 'C' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, pn}
 								prev_player_speed[index] = speed
 							elseif moments_player_init_speeds[index][2] == 'm' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, pn}
 								prev_player_speed[index] = speed
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
@@ -137,13 +137,13 @@
 							speed_diff = math.abs(speed - prev_player_speed[i])
 							
 							if v[2] == 'x' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', v[1]}
 								prev_player_speed[i] = speed
 							elseif v[2] == 'C' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, v[1]}
 								prev_player_speed[i] = speed
 							elseif v[2] == 'm' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, v[1]}
 								prev_player_speed[i] = speed
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
@@ -168,14 +168,14 @@
 							speed_diff = math.abs(speed - prev_player_speed[index])
 							
 							if moments_player_init_speeds[index][2] == 'x' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', pn}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. prev_player_speed[index] .. 'x', pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. prev_player_speed[index] .. 'x', pn}
 							elseif moments_player_init_speeds[index][2] == 'C' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, pn}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. prev_player_speed[index], pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. prev_player_speed[index], pn}
 							elseif moments_player_init_speeds[index][2] == 'm' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, pn}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. prev_player_speed[index], pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, pn}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. prev_player_speed[index], pn}
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
 								SCREENMAN:SystemMessage('[ERROR] No valid speed type detected for Player ' .. pn)
@@ -187,14 +187,14 @@
 							speed_diff = math.abs(speed - prev_player_speed[i])
 							
 							if v[2] == 'x' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', v[1]}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. prev_player_speed[i] .. 'x', v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. speed .. 'x', v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. prev_player_speed[i] .. 'x', v[1]}
 							elseif v[2] == 'C' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, v[1]}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. prev_player_speed[i], v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. (base_rate * speed_diff) / moments_bpm .. ' ' .. 'C' .. prev_player_speed[i], v[1]}
 							elseif v[2] == 'm' then
-								moments_mods[#moments_mods+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, v[1]}
-								moments_mods[#moments_mods+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. prev_player_speed[i], v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. speed, v[1]}
+								moments_mods[table.getn(moments_mods)+1] = {beat+undo_after, '\' *' .. base_rate * speed_diff .. ' ' .. 'm' .. prev_player_speed[i], v[1]}
 							else
 								-- We shouldn't be ending up here, if we do, something went wrong.
 								SCREENMAN:SystemMessage('[ERROR] No valid speed type detected for Player ' .. v[1])
@@ -264,14 +264,10 @@
 					end
 				end
 				
-				if #moments_enabled_players < 1 then
+				if table.getn(moments_enabled_players) < 1 then
 					moments_amount_enabled_players = 1
 				else
-					moments_amount_enabled_players = #moments_enabled_players
-				end
-				
-				for plr=1,moments_amount_enabled_players do
-					curmod[plr] = 1
+					moments_amount_enabled_players = table.getn(moments_enabled_players)
 				end
 				
 				-- Obtain initial speed settings of the players, then add speed mods to the mod table based on these initial speeds. During normal game mode, either P1 or P2 are assumed to be present.
