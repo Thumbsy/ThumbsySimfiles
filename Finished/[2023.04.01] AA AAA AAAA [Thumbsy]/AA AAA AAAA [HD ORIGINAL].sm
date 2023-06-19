@@ -1,0 +1,86 @@
+#TITLE:AA AAA AAAA [HD ORIGINAL];
+#SUBTITLE:;
+#ARTIST:watchthefrickingheck;
+#TITLETRANSLIT:;
+#SUBTITLETRANSLIT:;
+#ARTISTTRANSLIT:;
+#GENRE:;
+#CREDIT:Thumbsy;
+#MUSIC:AA AAA AAAA [HD ORIGINAL].ogg;
+#BANNER:;
+#BACKGROUND:;
+#CDTITLE:;
+#SAMPLESTART:0.000;
+#SAMPLELENGTH:0.000;
+#SELECTABLE:YES;
+#OFFSET:1.258;
+#BPMS:0.000=120.000
+,4.000=187.000
+,12.000=233.000
+,20.000=401.000
+;
+#STOPS:;
+#DISPLAYBPM:*;
+#BGCHANGES:2.516=AA AAA AAAA [HD ORIGINAL].avi=1.000=0=0=0,
+99999=-nosongbg-=1.000=0=0=0 // don't automatically add -songbackground-
+;
+#FGCHANGES:0.000=LuAAAA/main.lua=1.000=0=0=1;
+//--------------- dance-single - Thumbsy ----------------
+#NOTES:
+     dance-single:
+     Thumbsy:
+     Beginner:
+     1:
+     0,0,0,0,0:
+0000
+0000
+0000
+0000
+,
+2000
+0000
+0000
+3000
+,
+0000
+0000
+0000
+0000
+,
+0002
+0000
+0000
+0000
+,
+0003
+0000
+0000
+0000
+,
+4000
+0004
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+,
+0000
+0000
+0000
+0000
+,
+0000
+0000
+3003
+0000
+;
